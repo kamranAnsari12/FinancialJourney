@@ -49,7 +49,8 @@ const Page2 = ({ formData, onNavigateToPage3 }) => {
   const totalMonthlyLoan = loans.reduce((sum, loan) => sum + parseFloat(loan.emi || 0), 0);
 
   // Calculate the performance score
-  const score = ((income - expenses - totalMonthlyLoan) / income) * 100;
+  const score = Math.round(((income - expenses - totalMonthlyLoan) / income) * 100);
+
 
   return (
     <div
@@ -85,7 +86,7 @@ const Page2 = ({ formData, onNavigateToPage3 }) => {
         <p><strong>Expenses:</strong>  ₹{expenses}</p>
         <p><strong>Total Monthly Loan:</strong>  ₹{totalMonthlyLoan}</p>
         <p>
-          <strong>Debt:</strong>{" "}
+         
           {loans && loans.length > 0 ? (
             <ul style={{ textAlign: "left" }}>
               {loans.map((loan, index) => (

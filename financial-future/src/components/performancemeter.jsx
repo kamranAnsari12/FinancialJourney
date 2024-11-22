@@ -4,8 +4,8 @@ const PerformanceMeter = ({ score }) => {
   // Determine the label and color based on the score
   const getPerformanceDetails = (score) => {
     if (score > 20) return { label: "Good", color: "#008000" }; // Green
-    if (score > 15) return { label: "Upper Moderate", color: "#FFA500" }; // Orange
-    if (score > 10) return { label: "Lower Moderate", color: "#FFFF00" }; // Yellow
+    if (score > 15) return { label: "Upper Moderate", color: "#FFFF00" }; // Orange
+    if (score > 10) return { label: "Lower Moderate", color: "#FFA500" }; // Yellow
     return { label: "Bad", color: "#FF0000" }; // Red
   };
 
