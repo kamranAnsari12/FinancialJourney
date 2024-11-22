@@ -1,0 +1,25 @@
+{
+    "page1": {
+        "name": "Harsh",
+        "income": "50000",
+        "expenses": "20000",
+        "loans": [
+            {
+                "loanType": "home",
+                "emi": "10000",
+                "interestRate": "9",
+                "tenure": "58"
+            }
+        ]
+    },
+    "page3": {
+        "age": "24",
+        "goals": [
+            {
+                "goal": "car",
+                "amount": "500000",
+                "term": "short-term"
+            }
+        ]
+    }
+}

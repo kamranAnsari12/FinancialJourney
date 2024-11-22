@@ -120,7 +120,7 @@ const Page2 = ({ formData, onNavigateToPage3 }) => {
           cursor: "pointer",
         }}
       >
-        Go to Page 3
+        Plan Your Future
       </button>
     </div>
   );

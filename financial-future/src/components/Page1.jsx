@@ -4,6 +4,7 @@ const Page1 = ({ onSubmit }) => {
   const [income, setIncome] = useState("");
   const [expenses, setExpenses] = useState("");
   const [hasDebt, setHasDebt] = useState(false);
+  const [name,setname]=useState("");
   const [loans, setLoans] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
 
@@ -32,7 +33,7 @@ const Page1 = ({ onSubmit }) => {
       return;
     }
 
-    onSubmit({ income, expenses, loans: hasDebt ? loans : [] });
+    onSubmit({ name, income, expenses, loans: hasDebt ? loans : [] });
   };
 
   const closePopup = () => {
@@ -64,6 +65,23 @@ const Page1 = ({ onSubmit }) => {
         }}
       >
         <h2 style={{ marginBottom: "20px", color: "#333" }}>Financial Form</h2>
+        <div style={{ marginBottom: "15px" }}>
+          <label>What is your Name? :</label>
+          <input
+            type="text"
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setname(e.target.value)}
+            required
+            style={{
+              width: "100%",
+              padding: "10px",
+              marginTop: "5px",
+              borderRadius: "5px",
+              border: "1px solid #ccc",
+            }}
+          />
+        </div>
         <div style={{ marginBottom: "15px" }}>
           <label>What is your monthly income? :</label>
           <input
