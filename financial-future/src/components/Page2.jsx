@@ -13,7 +13,15 @@ const Page2 = ({ formData, onNavigateToPage3 }) => {
         {loans && loans.length > 0 ? (
           <ul>
             {loans.map((loan, index) => (
-              <li key={index}>Loan {index + 1}: {loan}</li>
+              <li key={index}>
+                Loan {index + 1}: 
+                <ul>
+                  <li>Loan Type: {loan.loanType}</li>
+                  <li>EMI: {loan.emi}</li>
+                  <li>Interest Rate: {loan.interestRate}%</li>
+                  <li>Tenure: {loan.tenure} months</li>
+                </ul>
+              </li>
             ))}
           </ul>
         ) : (
