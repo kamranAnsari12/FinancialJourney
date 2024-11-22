@@ -1,3 +1,5 @@
+
+
 // import React, { useState } from "react";
 
 // const Page3 = ({ onSubmitGoalSetting }) => {
@@ -6,14 +8,18 @@
 //   const [amount, setAmount] = useState("");
 //   const [term, setTerm] = useState("short-term");
 //   const [goals, setGoals] = useState([]);
-//   const [selectedTerm, setSelectedTerm] = useState("all");
+//   const [error, setError] = useState("");
 
 //   const handleAddGoal = () => {
-//     if (!goal.trim() || !amount.trim() || !age.trim()) return;
+//     if (!goal.trim() || !amount.trim()) {
+//       setError("Please fill out both the goal and amount fields.");
+//       return;
+//     }
 //     setGoals([...goals, { goal, amount, term }]);
 //     setGoal("");
 //     setAmount("");
 //     setTerm("short-term");
+//     setError(""); // Clear error after successful goal addition
 //   };
 
 //   const handleRemoveGoal = (index) => {
@@ -22,6 +28,15 @@
 
 //   const handleSubmit = (e) => {
 //     e.preventDefault();
+//     if (!age.trim()) {
+//       setError("Please enter your age.");
+//       return;
+//     }
+//     if (goals.length === 0) {
+//       setError("Please add at least one goal before submitting.");
+//       return;
+//     }
+//     setError("");
 //     onSubmitGoalSetting({ age, goals });
 //   };
 
@@ -78,8 +93,9 @@
 //             required
 //           />
 //         </div>
-//          {/* Goal Term Radio Buttons */}
-//          <div style={{ marginBottom: "15px" }}>
+
+//         {/* Goal Term Radio Buttons */}
+//         <div style={{ marginBottom: "15px" }}>
 //           <label
 //             style={{
 //               display: "block",
@@ -146,7 +162,6 @@
 //               fontSize: "14px",
 //               marginBottom: "5px",
 //             }}
-//             required
 //           />
 //         </div>
 
@@ -176,11 +191,8 @@
 //               fontSize: "14px",
 //               marginBottom: "5px",
 //             }}
-//             required
 //           />
 //         </div>
-
-       
 
 //         {/* Add Goal Button */}
 //         <button
@@ -243,7 +255,9 @@
 //           </ul>
 //         </div>
 
-       
+//         {error && (
+//           <p style={{ color: "red", marginBottom: "15px" }}>{error}</p>
+//         )}
 
 //         {/* Submit Button */}
 //         <button
@@ -268,7 +282,6 @@
 // };
 
 // export default Page3;
-
 
 import React, { useState } from "react";
 
@@ -486,48 +499,34 @@ const Page3 = ({ onSubmitGoalSetting }) => {
 
         {/* Display Goals */}
         <div style={{ marginBottom: "15px" }}>
-          <h4 style={{ marginBottom: "10px" }}>Your Goals</h4>
-          <ul style={{ listStyleType: "none", padding: "0" }}>
-            {goals.map((item, index) => (
-              <li
-                key={index}
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  marginBottom: "10px",
-                  padding: "10px",
-                  backgroundColor: "#f9f9f9",
-                  borderRadius: "5px",
-                  boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-                }}
-              >
-                <span>
-                  {item.goal} -  ₹{item.amount} ({item.term})
-                </span>
-                <button
-                  type="button"
-                  onClick={() => handleRemoveGoal(index)}
-                  style={{
-                    padding: "5px 10px",
-                    backgroundColor: "#dc3545",
-                    color: "#fff",
-                    border: "none",
-                    borderRadius: "5px",
-                    cursor: "pointer",
-                    fontSize: "12px",
-                  }}
-                >
-                  Remove
-                </button>
-              </li>
-            ))}
-          </ul>
+          <h4>Your Goals</h4>
+          {goals.length > 0 ? (
+            <ul>
+              {goals.map((g, index) => (
+                <li key={index} style={{ marginBottom: "10px" }}>
+                  <strong>{g.goal}</strong> - ₹{g.amount} ({g.term})
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveGoal(index)}
+                    style={{
+                      marginLeft: "10px",
+                      padding: "5px",
+                      backgroundColor: "red",
+                      color: "#fff",
+                      border: "none",
+                      borderRadius: "3px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    Remove
+                  </button>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No goals added yet.</p>
+          )}
         </div>
-
-        {error && (
-          <p style={{ color: "red", marginBottom: "15px" }}>{error}</p>
-        )}
 
         {/* Submit Button */}
         <button
@@ -544,8 +543,13 @@ const Page3 = ({ onSubmitGoalSetting }) => {
             fontWeight: "bold",
           }}
         >
-          Submit
+          Submit Goals
         </button>
+
+        {/* Error Message */}
+        {error && (
+          <p style={{ color: "red", marginTop: "10px" }}>{error}</p>
+        )}
       </form>
     </div>
   );
