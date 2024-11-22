@@ -51,7 +51,7 @@ const Page1 = ({ onSubmit }) => {
         fontFamily: "Arial, sans-serif",
       }}
     >
-      <form
+      <form 
         onSubmit={handleSubmit}
         style={{
           backgroundColor: "#ffffff", // White background
