@@ -81,9 +81,9 @@ const Page2 = ({ formData, onNavigateToPage3 }) => {
           width: "300px",
         }}
       >
-        <p><strong>Income:</strong> ${income}</p>
-        <p><strong>Expenses:</strong> ${expenses}</p>
-        <p><strong>Total Monthly Loan:</strong> ${totalMonthlyLoan}</p>
+        <p><strong>Income:</strong>  ₹{income}</p>
+        <p><strong>Expenses:</strong>  ₹{expenses}</p>
+        <p><strong>Total Monthly Loan:</strong>  ₹{totalMonthlyLoan}</p>
         <p>
           <strong>Debt:</strong>{" "}
           {loans && loans.length > 0 ? (
@@ -93,7 +93,7 @@ const Page2 = ({ formData, onNavigateToPage3 }) => {
                   <strong>Loan {index + 1}:</strong>
                   <ul>
                     <li>Type: {loan.loanType}</li>
-                    <li>EMI: ${loan.emi}</li>
+                    <li>EMI:  ₹{loan.emi}</li>
                     <li>Interest Rate: {loan.interestRate}%</li>
                     <li>Tenure: {loan.tenure} months</li>
                   </ul>
