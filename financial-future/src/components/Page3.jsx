@@ -1,6 +1,7 @@
 
 
 import React, { useState } from "react";
+import { Route } from "react-router-dom";
 
 const Page3 = ({ onSubmitGoalSetting }) => {
   const [age, setAge] = useState("");
@@ -33,6 +34,7 @@ const Page3 = ({ onSubmitGoalSetting }) => {
     setGoal("");
     setAmount("");
     setTerm("short-term");
+    
     setgoaltenure("");
     setError(""); // Clear error after successful goal addition
   };

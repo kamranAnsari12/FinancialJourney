@@ -139,6 +139,7 @@ import React, { useState } from "react";
 import Page1 from "./components/Page1";
 import Page2 from "./components/Page2";
 import Page3 from "./components/Page3";
+import Page4 from "./components/Page4";
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState(1); // Tracks the current page
@@ -164,6 +165,7 @@ const App = () => {
       page1: page1Data,
       page3: data,
     };
+    setCurrentPage(4)
     setCombinedData(finalData); // Combine and store data
     console.log("Combined Data:", finalData); // Log the combined JSON data (only visible in the developer console)
   };
@@ -175,6 +177,8 @@ const App = () => {
         <Page2 formData={page1Data} onNavigateToPage3={handleNavigateToPage3} />
       )}
       {currentPage === 3 && <Page3 onSubmitGoalSetting={handlePage3Submit} />}
+      {currentPage === 4 && <Page4  />}
+  
     </div>
   );
 };
